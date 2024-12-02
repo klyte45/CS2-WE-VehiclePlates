@@ -10,13 +10,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace _BaseModule
+namespace VehiclePlates
 {
     public class Mod : IMod
     {
-        public static ILog log = LogManager.GetLogger($"{nameof(_BaseModule)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
-
+        public static ILog log = LogManager.GetLogger($"{typeof(Mod).Assembly.GetName().Name}.{nameof(Mod)}").SetShowsErrorsInUI(false);
         private static readonly BindingFlags allFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.GetField | BindingFlags.GetProperty;
+        private static bool wasLoaded;
 
 
         public void OnLoad(UpdateSystem updateSystem)
@@ -26,21 +26,34 @@ namespace _BaseModule
             if (GameManager.instance.modManager.TryGetExecutableAsset(this, out var asset))
                 log.Info($"Current mod asset at {asset.path}");
 
-            DoPatches();
+            GameManager.instance.onGameLoadingComplete += DoWhenLoaded;
+        }
 
-            var imagesDirectory = Path.Combine(asset.path, "atlases");
+        private void DoWhenLoaded(Colossal.Serialization.Entities.Purpose purpose, GameMode mode)
+        {
+            log.Info($"Loading patches");
+            DoPatches();
+            RegisterFiles();
+            GameManager.instance.onGameLoadingComplete -= DoWhenLoaded;
+        }
+
+        private void RegisterFiles()
+        {
+            GameManager.instance.modManager.TryGetExecutableAsset(this, out var asset);
+            var modDir = Path.GetDirectoryName(asset.path);
+            var imagesDirectory = Path.Combine(modDir, "atlases");
             var atlases = Directory.GetDirectories(imagesDirectory, "*", SearchOption.TopDirectoryOnly);
             foreach (var atlasFolder in atlases)
             {
                 WEImageManagementBridge.RegisterImageAtlas(typeof(Mod).Assembly, Path.GetFileName(atlasFolder), Directory.GetFiles(atlasFolder, "*.png"));
             }
 
-            var layoutsDirectory = Path.Combine(asset.path, "layouts");
+            var layoutsDirectory = Path.Combine(modDir, "layouts");
             WETemplatesManagementBridge.RegisterCustomTemplates(typeof(Mod).Assembly, layoutsDirectory);
             WETemplatesManagementBridge.RegisterLoadableTemplatesFolder(typeof(Mod).Assembly, layoutsDirectory);
 
 
-            var fontsDirectory = Path.Combine(asset.path, "fonts");
+            var fontsDirectory = Path.Combine(modDir, "fonts");
             WEFontManagementBridge.RegisterModFonts(typeof(Mod).Assembly, fontsDirectory);
         }
 
@@ -59,7 +72,10 @@ namespace _BaseModule
                     foreach (var method in type.GetMethods(BindingFlags.Public | BindingFlags.Static))
                     {
                         var srcMethod = targetType.GetMethod(method.Name, allFlags, null, method.GetParameters().Select(x => x.ParameterType).ToArray(), null);
-                        if (srcMethod != null) Harmony.ReversePatch(srcMethod, method);
+                        if (srcMethod != null)
+                        {
+                            Harmony.ReversePatch(srcMethod, method);
+                        }
                         else log.Warn($"Method not found while patching WE: {targetType.FullName} {srcMethod.Name}({string.Join(", ", method.GetParameters().Select(x => $"{x.ParameterType}"))})");
                     }
                 }
@@ -68,6 +84,7 @@ namespace _BaseModule
             {
                 throw new Exception("Write Everywhere dll file required for using this mod! Check if it's enabled.");
             }
+
         }
 
         public void OnDispose()

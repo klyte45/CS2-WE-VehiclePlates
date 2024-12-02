@@ -5,7 +5,6 @@
 		<TargetFramework>net472</TargetFramework>
     <LangVersion>12</LangVersion>
 		<Configurations>Debug;Release</Configurations>
-		
 		<!--The file where mod information which is required for publishing mod on PDX mods are stored-->
 		<PublishConfigurationPath>Properties\PublishConfiguration.xml</PublishConfigurationPath>
 	</PropertyGroup>
@@ -17,16 +16,14 @@
 
   <PropertyGroup>
     <IsBelzontCommonsMod>false</IsBelzontCommonsMod>
-    <ModId></ModId>
+    <ModId>95683</ModId>
     <Version>1.0.0.0</Version>
     <GameVersion>1.1.*</GameVersion>
     <ThumbnailPath>Properties/Thumbnail.png</ThumbnailPath>
-    <DisplayName>Write Everywhere Module Model Project</DisplayName>
-    <ShortDescription>Module to use along CS2 version of the mod Write Everywhere</ShortDescription>
+    <DisplayName>Road vehicle plate positions [WE Module]</DisplayName>
+    <ShortDescription>Add placeholder to all vanilla road vehicle assets to be replaced by WE layouts.</ShortDescription>
     <ForumLink></ForumLink>
-    <GitHubLink></GitHubLink>
-    <YoutubeLink></YoutubeLink>
-    <KofiLink></KofiLink>
+    <GitHubLink>https://github.com/klyte45/CS2-WE-VehiclePlates</GitHubLink>
     <BMACLink></BMACLink>
     <CrowdinLink></CrowdinLink>
     <TwitterLink></TwitterLink>
@@ -34,7 +31,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ModTag Include="Code Mod;Write Everywhere Module" />
+    <ModTag Include="Code Mod" />
     <Screenshots Include="Screenshots/*.jpg" />
     <Dependency Include="WriteEverywhere">
       <ModId>92908</ModId>
@@ -91,26 +88,23 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.3.3" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="changelog.md" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\layouts\" />
-    <Folder Include="Resources\atlases\" />
-    <Folder Include="Resources\fonts\" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.3" />
   </ItemGroup>
-  
+
   <Target Name="GetAdditionalFiles" AfterTargets="DeployWIP">
     <ItemGroup>
-      <AdditionalFilesToDeploy Include="Resources\atlases\**\*.png" />
-      <AdditionalFilesToDeploy Include="Resources\fonts\**\*.ttf" />
-      <AdditionalFilesToDeploy Include="Resources\layouts\**\*.wedefault.xml" />
-      <AdditionalFilesToDeploy Include="Resources\layouts\**\*.welayout.xml" />
+      <AdditionalFilesToDeployAtlas Include="Resources\atlases\**\*.png" />
+      <AdditionalFilesToDeployFonts Include="Resources\fonts\**\*.ttf" />
+      <AdditionalFilesToDeployLayouts Include="Resources\layouts\**\*.wedefault.xml" />
+      <AdditionalFilesToDeployLayouts Include="Resources\layouts\**\*.welayout.xml" />
     </ItemGroup>
-    <Copy SourceFiles="@(AdditionalFilesToDeploy)" DestinationFiles="@(AdditionalFilesToDeploy->'$(DeployDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(AdditionalFilesToDeployAtlas)" DestinationFiles="@(AdditionalFilesToDeployAtlas->'$(DeployDir)\atlases\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(AdditionalFilesToDeployFonts)" DestinationFiles="@(AdditionalFilesToDeployFonts->'$(DeployDir)\fonts\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(AdditionalFilesToDeployLayouts)" DestinationFiles="@(AdditionalFilesToDeployLayouts->'$(DeployDir)\layouts\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
+  
 </Project>

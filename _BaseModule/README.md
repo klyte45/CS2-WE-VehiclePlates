@@ -1,16 +1,20 @@
-# Model project for Write Everywhre modules mods
+# Vehicle plates
 
-This is a project to be used as starter point to any new module pack of Write Everywhere mod for Cities Skylines 2.
+This mod integrates with WriteEverywhere to import into game placeholders for all vanilla road vehicles. It will be updated as soon as new road vehicles get added to base game or DLCs.
+Also contains templates to be loaded in City Layouts tab to fill the placeholders. You can use them or make your own model based on them.
 
-## Setting up
+My fonts suggestion are: `Mandatory` or `GL-Nummernschild-Eng`. They were not added to this mod due licensing issues.
 
-- Rename this project and solution to setup the DLL name this module will have.
-	- TIP: To avoid conflicts, start the project name with a acronym representing your name, example: `XYZ_MyWEModule` being XYZ the acronym that represents you.
-- Add resources at each `Resources/` subfolder as instructed locally there
-- Change csproj file details (DisplayName, ShortDescription, ForumLink, other social media links tags)
-- Setup thumbnail into `Properties/Thumbnail.png`
-- Add screenshots at `Screenshots/` folder (jpg files, optional)
-- Publish the mod using "Publish..." option in context menu of the project
-- After having a modId in Paradox Mods, setup it into the ModId parameter at csproj file
+The default plate layouts are just suggestive, you can use any model you want. There are the placeholder categories and the default layout colors used for Background/Text of the plates:
 
-After that, just don't forget to change the Version parameter in the csproj file if you need to upload new versions of the module!
+- *CATEGORY: Fprmat | BG Color | FG Color*
+- BUS: Rectangle | Purple | White
+- CAR: Rectangle | Gray | Black
+- EMERGENCY: Rectangle | Yellow | Red
+- MOTORCYCLE: Square | Gray | Black
+- SERVICE: Rectangle | Blue | White
+- TAXI: Rectangle | Red | White
+- TRUCK: Rectangle | Red | White
+
+You can load the layouts and edit them in the game as you wish.
+To customize the format of the text content, watch for feature to be released at [Addresses Mod](https://mods.paradoxplaza.com/mods/74182/Windows)
