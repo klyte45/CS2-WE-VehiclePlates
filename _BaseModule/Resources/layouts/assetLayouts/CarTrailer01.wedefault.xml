@@ -2,10 +2,10 @@
   <children>
     <self itemName="Plate">
       <layoutMesh>
-        <layout>_VEHICLEPLATE_CAR</layout>
+        <layout>CarsPlate</layout>
       </layoutMesh>
       <transform>
-        <offsetPosition x="0" y="0.397000283" z="-1.070999" />
+        <offsetPosition x="0" y="0.39" z="-1.075" />
         <offsetRotation x="0" y="180" z="0" />
         <scale x="0.4" y="0.13" z="1" />
       </transform>

@@ -2,12 +2,12 @@
   <children>
     <self itemName="Back Plate">
       <transform>
-        <offsetPosition x="-6.99306335E-10" y="0.690678537" z="-4.87908" />
-        <offsetRotation x="0.009982094" y="180" z="1.0017915E-05" />
+        <offsetPosition x="0" y="0.69" z="-4.885" />
+        <offsetRotation x="0" y="180" z="0" />
         <scale x="0.37" y="0.13" z="1" />
       </transform>
       <layoutMesh>
-        <layout>_VEHICLEPLATE_TRUCK</layout>
+        <layout>TrucksPlate</layout>
       </layoutMesh>
     </self>
   </children>
@@ -19,7 +19,7 @@
         <scale x="0.37" y="0.13" z="1" />
       </transform>
       <layoutMesh>
-        <layout>_VEHICLEPLATE_TRUCK</layout>
+        <layout>TrucksPlate</layout>
       </layoutMesh>
     </self>
   </children>

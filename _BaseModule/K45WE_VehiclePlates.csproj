@@ -17,8 +17,8 @@
   <PropertyGroup>
     <IsBelzontCommonsMod>false</IsBelzontCommonsMod>
     <ModId>95683</ModId>
-    <Version>1.0.0.0</Version>
-    <GameVersion>1.1.*</GameVersion>
+    <Version>1.1.0.0</Version>
+    <GameVersion>1.*</GameVersion>
     <ThumbnailPath>Properties/Thumbnail.png</ThumbnailPath>
     <DisplayName>Road vehicle plate positions [WE Module]</DisplayName>
     <ShortDescription>Add placeholder to all vanilla road vehicle assets to be replaced by WE layouts.</ShortDescription>

@@ -2,8 +2,8 @@
   <children>
     <self itemName="Plate">
       <transform>
-        <offsetPosition x="3.83992E-09" y="0.3995164" z="-1.11505055" />
-        <offsetRotation x="337.679169" y="180" z="-5.501074E-13" />
+        <offsetPosition x="0" y="0.593" z="-0.960" />
+        <offsetRotation x="335.6" y="180" z="0" />
         <scale x="0.2" y="0.17" z="1" />
       </transform>
       <layoutMesh>

@@ -2,7 +2,7 @@
   <children>
     <self itemName="Plate">
       <layoutMesh>
-        <layout>_VEHICLEPLATE_CAR</layout>
+        <layout>CarsPlate</layout>
       </layoutMesh>
       <transform>
         <offsetPosition x="0" y="0.828127265" z="-2.26593018" />
@@ -14,7 +14,7 @@
   <children>
     <self itemName="Plate">
       <layoutMesh>
-        <layout>_VEHICLEPLATE_CAR</layout>
+        <layout>CarsPlate</layout>
       </layoutMesh>
       <transform>
         <offsetPosition x="1.46485757E-09" y="0.285690427" z="2.40664244" />

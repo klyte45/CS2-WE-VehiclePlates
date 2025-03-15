@@ -5,7 +5,7 @@
       <offsetRotation x="-0" y="0" z="0" />
       <scale x="0.17" y="0.17" z="1" />
     </transform>
-    <imageMesh atlas="K45WE_VehiclePlates:basicPlates">
+    <imageMesh atlas="basicPlates">
       <image>GenericPlateSmall</image>
     </imageMesh>
     <defaultStyle>
@@ -28,7 +28,7 @@
         <offsetRotation x="-0" y="0" z="0" />
         <scale x="0.055" y="0.055" z="1" />
       </transform>
-      <textMesh fontName="_VEHICLEPLATE_FONT" maxWidthMeters="0.135">
+      <textMesh fontName="PlateContentFont" maxWidthMeters="0.135">
         <text formulae="&amp;BelzontWE.Builtin.WEVehicleFn;GetVehiclePlateLine1"></text>
       </textMesh>
       <defaultStyle>
@@ -52,7 +52,7 @@
         <offsetRotation x="-0" y="0" z="0" />
         <scale x="0.055" y="0.055" z="1" />
       </transform>
-      <textMesh fontName="_VEHICLEPLATE_FONT" maxWidthMeters="0.135">
+      <textMesh fontName="PlateContentFont" maxWidthMeters="0.135">
         <text formulae="&amp;BelzontWE.Builtin.WEVehicleFn;GetVehiclePlateLine2" />
       </textMesh>
       <defaultStyle>

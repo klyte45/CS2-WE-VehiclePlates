@@ -1,6 +1,6 @@
 <WELayout>
   <self itemName="New item">
-    <imageMesh atlas="K45WE_VehiclePlates:basicPlates">
+    <imageMesh atlas="basicPlates">
       <image>GenericPlate</image>
     </imageMesh>
     <transform>
@@ -9,17 +9,17 @@
       <scale x="0.10" y="0.10" z="1" />
     </transform>
     <defaultStyle> 
-      <colorMask2>000000</colorMask2> 
-      <colorMask1>FFFFFF</colorMask1>
+      <colorMask2>ffffff</colorMask2> 
+      <colorMask1>AA22AA</colorMask1>
       <color>FFFFFFFF</color>
       <coatStrength>0.332</coatStrength>
       <smoothness>0.188</smoothness>
-      <metallic>0.404</metallic>
+      <metallic>0.4</metallic>
     </defaultStyle>
   </self>
   <children>
     <self itemName="Text">
-      <textMesh fontName="_VEHICLEPLATE_FONT" maxWidthMeters="0.3">
+      <textMesh fontName="PlateContentFont" maxWidthMeters="0.3">
         <text formulae="&amp;BelzontWE.Builtin.WEVehicleFn;GetVehiclePlate"/>
       </textMesh>
       <transform>
@@ -28,9 +28,9 @@
         <scale x="0.065" y="0.065" z="1" />
       </transform>
       <defaultStyle>
-        <color>000000FF</color>
+        <color>FFFFFFFF</color>
         <smoothness>0.01</smoothness>
-        <metallic>1</metallic>
+        <metallic>0.05</metallic>
       </defaultStyle>
     </self>
   </children>

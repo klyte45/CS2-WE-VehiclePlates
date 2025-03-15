@@ -7,7 +7,7 @@
         <scale x="0.4" y="0.13" z="1" />
       </transform>
       <layoutMesh>
-        <layout>_VEHICLEPLATE_EMERGENCY</layout>
+        <layout>EmergencyVehiclesPlate</layout>
       </layoutMesh>
     </self>
   </children>
@@ -19,7 +19,7 @@
         <scale x="0.4" y="0.13" z="1" />
       </transform>
       <layoutMesh>
-        <layout>_VEHICLEPLATE_EMERGENCY</layout>
+        <layout>EmergencyVehiclesPlate</layout>
       </layoutMesh>
     </self>
   </children>
